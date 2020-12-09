@@ -1,0 +1,25 @@
+DROP TABLE authors IF EXISTS;
+DROP TABLE genres IF EXISTS;
+DROP TABLE books IF EXISTS;
+
+CREATE TABLE authors (
+    author_id BIGINT IDENTITY PRIMARY KEY,
+    firstname VARCHAR(30) NOT NULL,
+    lastname VARCHAR(30) NOT NULL,
+    patronymic VARCHAR(30) NOT NULL,
+);
+
+CREATE TABLE genres (
+    genre_id BIGINT IDENTITY PRIMARY KEY,
+    name VARCHAR(30) NOT NULL,
+);
+
+CREATE TABLE books (
+    book_id BIGINT IDENTITY PRIMARY KEY,
+    name VARCHAR(30) NOT NULL,
+    author_id BIGINT FOREIGN KEY REFERENCES authors,
+    genre_id BIGINT FOREIGN KEY REFERENCES genres,
+    publisher VARCHAR(30) NOT NULL,
+    year  BIGINT NOT NULL,
+    city  VARCHAR(30) NOT NULL
+);
